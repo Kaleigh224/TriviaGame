@@ -2,26 +2,14 @@
 
 /* Background image */
 body {
-    background-image: url("../images/ChristmasBackground.jpg");
-    color: #ffffff;
+    background-image: url("../images/ChristmasWallpaper.jpg");
+    color: #cc0000;
     text-align: center;
+    font-family: Verdana, Geneva, Tahoma, sans-serif
     
+}
+#trivia {
+    color: #ffffff
     
 }
 
-/* Slideshow container */
-.slideshow-container {
-    max-width: 1000px;
-    position: relative;
-    margin: auto;
-}
-
-/* Hide the images by default */
-.mySlides {
-    display: none;
-}
-
-/* On hover, add a black background color with a little transparency */
-.prev:hover, .next:hover {
-    background-color: rgba(0,0,0,0.8);
-}
