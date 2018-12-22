@@ -1,8 +1,8 @@
 // Trivia Game
 
 // Set variables
-var timer;
-var time = 10;
+var timer = 60;
+var clockRunning = true;
 var QuestionArray;
 var question;
 var choices;
@@ -15,6 +15,8 @@ var userGuess;
 var correctAnswers = 0;
 var incorrectAnswers = 0;
 var noAnswer = 0;
+var intervalId;
+
 
 
 
@@ -170,14 +172,11 @@ $("#startButton").click(function () {
             $("#trivia").append("<input type='radio' name=' " + i + "'value='answer4'> " + QuestionArray[i].choices.answer4 + "<br>");
             $("#startButton").hide();
 
-            timer = setInterval(function () {
-                time--;
-                $("#timer").html("<h1>" + time + "<h2>");
-                if (time <= 0) {
-                    clearInterval(timer);
-                    submit();
-                };
-            }, 1000);
+            function start() {
+                if (!clockRunning) {
+                    intervalId = setInterval(countdown, 1000)
+                }
+            }
             
         
         function submit() {
