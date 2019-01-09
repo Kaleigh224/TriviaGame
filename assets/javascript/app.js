@@ -172,25 +172,38 @@ $("#startButton").click(function () {
             $("#trivia").append("<input type='radio' name=' " + i + "'value='answer4'> " + QuestionArray[i].choices.answer4 + "<br>");
             $("#startButton").hide();
 
-            function start() {
-                if (!clockRunning) {
-                    intervalId = setInterval(countdown, 1000)
+
+
+
+            function submit() {
+                if (userGuess !== correctAnswer) {
+                    incorrectAnswers++;
+                    $("#incorrect").text("Incorrect: " + incorrectAnswers);
+                } else if (userGuess === correctAnswer) {
+                    correctAnswers++;
+                    $("#correct").text("Correct: " + correctAnswers);
                 }
             }
-            
-        
-        function submit() {
-            if (userGuess !== correctAnswer) {
-                incorrectAnswers++;
-                $("#incorrect").text("Incorrect: " + incorrectAnswers);
-            } else if (userGuess === correctAnswer) {
-                correctAnswers++;
-                $("#correct").text("Correct: " + correctAnswers);
-            }
+
         }
-       
-    }
     });
 
-   
+
 });
+$(document).ready(function startTimer() {
+    var timing;
+    var myTimer;
+
+    timing = 60;
+    $("#timing").html(timing);
+    $("#begin").prop("disabled", true);
+    myTimer = setInterval(function () {
+        timing--;
+        $("#timing").html(timing);
+        if (timing === 0) {
+            alert("Time's up!")
+            clearInterval(myTimer);
+            $("#begin").prop("disabled", false);
+        }
+    }, 1000);
+})
